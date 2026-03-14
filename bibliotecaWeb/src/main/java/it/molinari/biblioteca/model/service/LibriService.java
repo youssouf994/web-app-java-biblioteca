@@ -21,7 +21,7 @@ public class LibriService
 		List<LibroDto> listaDto = new ArrayList<LibroDto>();
 		List<LibroPo> listaPo = new ArrayList<LibroPo>();
 		
-		if(id.equals("collezione"))
+		if(id.isEmpty() || id==null)
 		{
 			listaPo=dbManage.getCollezione();
 			
@@ -51,5 +51,10 @@ public class LibriService
 		}
 		
 		return listaDto;
+	}
+	
+	public String serviceInsert(String autore, String titolo)
+	{
+		return dbManage.insertLibro(autore, titolo) ? "inserimento avvenuto con successo" : "inserimento non riuscito";
 	}
 }

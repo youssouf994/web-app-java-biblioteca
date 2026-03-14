@@ -72,4 +72,28 @@ public class OperazioniCrud
 		
 		return listaPo;
 	}
+	
+	public boolean insertLibro(String autore, String titolo)
+	{
+		boolean check= false;
+		String query="insert into libri (autore, titolo) values (?, ?)";
+		
+		try(Connection connessione = DbConnection.getConnessione();
+			PreparedStatement ps = connessione.prepareStatement(query))
+		{
+			ps.setString(1, autore);
+			ps.setString(2, titolo);
+			
+			int righeInserite= ps.executeUpdate();
+			
+			check=(righeInserite > 0) ?  true :  false;
+		
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
 }

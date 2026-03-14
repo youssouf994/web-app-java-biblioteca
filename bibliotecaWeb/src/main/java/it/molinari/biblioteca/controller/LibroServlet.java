@@ -21,7 +21,7 @@ public class LibroServlet extends HttpServlet
 		super();
 	}
 	
-	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		try
@@ -33,7 +33,30 @@ public class LibroServlet extends HttpServlet
 			request.setAttribute("libri", listaDto);
 			request.getRequestDispatcher("/libriview.jsp").forward(request, response);
 		
-		}catch(IOException e)
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		try 
+		{
+			String autore=request.getParameter("autore");
+			String titolo = request.getParameter("titolo");
+			LibriService service = new LibriService();
+			
+			String risposta=service.serviceInsert(autore, titolo);
+			List<LibroDto> listaDto=service.serviceGetById("");
+			
+			request.setAttribute("risposta", risposta);
+			request.setAttribute("libri", listaDto);
+			request.getRequestDispatcher("/libriview.jsp").forward(request, response);
+		}
+		catch(IOException e)
 		{
 			e.printStackTrace();
 		}

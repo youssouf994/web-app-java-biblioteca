@@ -96,4 +96,25 @@ public class OperazioniCrud
 		
 		return check;
 	}
+	
+	
+	public boolean eliminaLibro(int id)
+	{
+		boolean check=false;
+		String query ="delete from libri where idLibro=?";
+		
+		try(Connection conn =DbConnection.getConnessione();
+			PreparedStatement ps=conn.prepareStatement(query))
+		{
+			ps.setInt(1, id);
+			ps.executeUpdate();
+			
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
 }

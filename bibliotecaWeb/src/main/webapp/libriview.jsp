@@ -6,6 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Lista Libri</title>
+		<script src="${pageContext.request.contextPath}/js/doDelete.js"></script>
 	</head>
 	
 	<body>
@@ -37,7 +38,7 @@
 		                <td>${libro.id}</td>
 		                <td>${libro.titolo}</td>
 		                <td>${libro.autore}</td>
-		                <td>elimina, modifica</td>
+		                <td><button onclick="eliminaLibro(${libro.id}, this)">elimina</button> | modifica</td>
 	            		</tr>
 	        		</c:forEach>
 			</table>

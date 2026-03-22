@@ -57,4 +57,9 @@ public class LibriService
 	{
 		return dbManage.insertLibro(autore, titolo) ? "inserimento avvenuto con successo" : "inserimento non riuscito";
 	}
+	
+	public String doElimina(String id)
+	{
+		return dbManage.eliminaLibro(Integer.parseInt(id)) ? "eliminazione avvenuta con successo" : "eliminazione non riuscita";
+	}
 }

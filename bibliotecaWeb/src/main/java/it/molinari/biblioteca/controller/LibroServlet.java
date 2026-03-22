@@ -61,4 +61,17 @@ public class LibroServlet extends HttpServlet
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String id = request.getParameter("id");
+		LibriService service = new LibriService();
+		
+		String risposta= service.doElimina(id);
+		
+		response.setStatus(HttpServletResponse.SC_OK);
+		response.setContentType("application/json");
+		response.getWriter().write("{\"success\": true}");
+	}
 }

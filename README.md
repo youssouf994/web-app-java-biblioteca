@@ -161,6 +161,5 @@ CREATE TABLE libri (
 
 ## 👤 Autore
 
-**Youssouf** — Istituto Molinari  
+**Youssouf A. Toure** — Milano 2026 
 
-*In memoria di Thomas Sankara (1949–1987) — rivoluzionario, umanista, educatore.*

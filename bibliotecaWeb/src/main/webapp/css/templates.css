@@ -1,0 +1,655 @@
+@charset "UTF-8";
+
+/* ================================================
+   BIBLIOTECA MOLINARI — templates.css
+   ================================================ */
+
+/* --- RESET & VARIABILI --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --oro:          #C9A84C;
+    --oro-chiaro:   #E8C96A;
+    --oro-scuro:    #8B6914;
+    --nero:         #0A0A08;
+    --nero-carta:   #111110;
+    --grigio-scuro: #1C1C1A;
+    --grigio-medio: #2E2E2B;
+    --grigio-testo: #8A8A7A;
+    --bianco-carta: #F5F0E8;
+    --rosso-sangue: #8B1A1A;
+    --verde-africa: #2D6A2D;
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-mono:    'DM Mono', 'Courier New', monospace;
+
+    --raggio:       2px;
+    --ombra-oro:    0 0 40px rgba(201, 168, 76, 0.15);
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--nero);
+    color: var(--bianco-carta);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* --- HEADER --- */
+#header {
+    position: relative;
+    width: 100%;
+    background-color: var(--nero-carta);
+    border-bottom: 1px solid var(--oro-scuro);
+    padding: 80px 60px 60px;
+    overflow: hidden;
+}
+
+#header-noise {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(201,168,76,0.015) 2px,
+            rgba(201,168,76,0.015) 4px
+        );
+    pointer-events: none;
+}
+
+#header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#header-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--oro);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#header-label::before,
+#header-label::after {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--oro);
+}
+
+#titolo-principale {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 110px);
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--bianco-carta);
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+}
+
+#titolo-principale em {
+    font-style: italic;
+    color: var(--oro);
+    display: block;
+}
+
+#header-sub {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--grigio-testo);
+    letter-spacing: 0.1em;
+}
+
+#header-deco {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 160px;
+    color: var(--oro-scuro);
+    opacity: 0.15;
+    user-select: none;
+    pointer-events: none;
+    animation: ruota 20s linear infinite;
+}
+
+@keyframes ruota {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to   { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* --- MAIN --- */
+#main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 32px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+/* --- TARGA SANKARA --- */
+#targa-sankara {
+    animation: entra-su 0.8s ease both;
+}
+
+@keyframes entra-su {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#targa-bordo {
+    border: 1px solid var(--oro-scuro);
+    border-top: 3px solid var(--oro);
+    background: linear-gradient(
+        135deg,
+        rgba(201,168,76,0.06) 0%,
+        rgba(10,10,8,0.0) 50%,
+        rgba(201,168,76,0.04) 100%
+    );
+    padding: 50px 60px;
+    position: relative;
+    text-align: center;
+    box-shadow: var(--ombra-oro), inset 0 0 60px rgba(201,168,76,0.03);
+}
+
+#targa-bordo::before,
+#targa-bordo::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--oro);
+    border-style: solid;
+}
+#targa-bordo::before { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
+#targa-bordo::after  { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; }
+
+#targa-stella {
+    font-size: 28px;
+    color: var(--oro);
+    margin-bottom: 20px;
+    display: block;
+    animation: pulsa 3s ease-in-out infinite;
+}
+
+@keyframes pulsa {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.7; transform: scale(1.1); }
+}
+
+#targa-titolo {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--grigio-testo);
+    margin-bottom: 8px;
+}
+
+#targa-nome {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 700;
+    color: var(--oro-chiaro);
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+#targa-anni {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--grigio-testo);
+    letter-spacing: 0.2em;
+    margin-bottom: 28px;
+}
+
+#targa-citazione {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--bianco-carta);
+    max-width: 650px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+#targa-desc {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--grigio-testo);
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#targa-ornamento {
+    margin-top: 28px;
+    color: var(--oro-scuro);
+    font-size: 14px;
+    letter-spacing: 12px;
+}
+
+/* --- TITOLI SEZIONE --- */
+.sezione-titolo {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--bianco-carta);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sezione-titolo::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--oro-scuro), transparent);
+}
+
+.sezione-numero {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--oro);
+    letter-spacing: 0.2em;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--oro-scuro);
+    padding: 4px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
+/* --- SEZIONI --- */
+#sezione-inserimento {
+    animation: entra-su 0.8s ease 0.1s both;
+}
+
+#sezione-catalogo {
+    animation: entra-su 0.8s ease 0.2s both;
+}
+
+/* --- FORM INSERIMENTO --- */
+#form-inserimento {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 16px;
+    align-items: end;
+    background: var(--grigio-scuro);
+    border: 1px solid var(--grigio-medio);
+    border-left: 3px solid var(--oro);
+    padding: 32px;
+    width: 100%;
+}
+
+/* --- FORM MODIFICA --- */
+#form-modifica {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: var(--grigio-scuro);
+    border: 1px solid var(--grigio-medio);
+    border-left: 3px solid var(--oro);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* --- CAMPI --- */
+.campo-gruppo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--oro);
+}
+
+.campo-input {
+    background: var(--nero-carta);
+    border: 1px solid var(--grigio-medio);
+    border-bottom: 1px solid var(--oro-scuro);
+    color: var(--bianco-carta);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    border-radius: var(--raggio);
+    width: 100%;
+}
+
+.campo-input::placeholder {
+    color: var(--grigio-testo);
+    font-style: italic;
+}
+
+.campo-input:focus {
+    border-bottom-color: var(--oro);
+    box-shadow: 0 2px 0 var(--oro);
+}
+
+/* --- BOTTONE INVIA --- */
+.btn-invia {
+    background: var(--oro);
+    color: var(--nero);
+    border: none;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.1s;
+    border-radius: var(--raggio);
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.btn-invia:hover {
+    background: var(--oro-chiaro);
+    transform: translateY(-1px);
+}
+
+.btn-invia:active {
+    transform: translateY(0);
+}
+
+.btn-icona {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 300;
+}
+
+/* --- AZIONI FORM MODIFICA --- */
+#form-azioni {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 8px;
+}
+
+.btn-annulla {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--grigio-testo);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.btn-annulla:hover {
+    color: var(--bianco-carta);
+}
+
+/* --- TABELLA --- */
+#tabella-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--grigio-medio);
+    border-top: 2px solid var(--oro);
+}
+
+#tabella-libri {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    table-layout: fixed;
+}
+
+#tabella-libri thead tr {
+    background: var(--grigio-scuro);
+    border-bottom: 1px solid var(--oro-scuro);
+}
+
+#tabella-libri thead th {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--oro);
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.col-id     { width: 70px; }
+.col-titolo { width: auto; }
+.col-autore { width: 25%; }
+.col-azioni { width: 210px; }
+
+.libro-riga {
+    border-bottom: 1px solid var(--grigio-medio);
+    transition: background 0.15s;
+}
+
+.libro-riga:hover {
+    background: rgba(201,168,76,0.04);
+}
+
+.libro-riga:last-child {
+    border-bottom: none;
+}
+
+#tabella-libri td {
+    padding: 16px 20px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#tabella-libri td.col-azioni {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    overflow: visible;
+}
+
+.id-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--oro-scuro);
+    color: var(--oro);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+}
+
+.titolo-testo {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--bianco-carta);
+    font-weight: 400;
+}
+
+.autore-testo {
+    font-size: 13px;
+    color: var(--grigio-testo);
+    font-style: italic;
+}
+
+/* --- BOTTONI TABELLA --- */
+.btn-elimina,
+.btn-modifica {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 7px 12px;
+    border-radius: var(--raggio);
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.btn-elimina {
+    background: transparent;
+    border-color: var(--rosso-sangue);
+    color: #C07070;
+}
+
+.btn-elimina:hover {
+    background: var(--rosso-sangue);
+    color: var(--bianco-carta);
+    transform: translateY(-1px);
+}
+
+.btn-modifica {
+    background: transparent;
+    border-color: var(--grigio-medio);
+    color: var(--grigio-testo);
+}
+
+.btn-modifica:hover {
+    border-color: var(--oro-scuro);
+    color: var(--oro);
+    transform: translateY(-1px);
+}
+
+/* --- BREADCRUMB --- */
+#breadcrumb {
+    margin-bottom: 40px;
+}
+
+#link-back {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--oro);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+}
+
+#link-back:hover {
+    gap: 14px;
+}
+
+/* --- MESSAGGI FEEDBACK --- */
+.messaggio-nascosto {
+    display: none;
+}
+
+.messaggio-successo,
+.messaggio-errore {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 14px 20px;
+    border-radius: var(--raggio);
+    border-left: 3px solid;
+    margin-top: 16px;
+    max-width: 600px;
+}
+
+.messaggio-successo {
+    background: rgba(45, 106, 45, 0.15);
+    border-color: var(--verde-africa);
+    color: #7DBF7D;
+}
+
+.messaggio-errore {
+    background: rgba(139, 26, 26, 0.15);
+    border-color: var(--rosso-sangue);
+    color: #C07070;
+}
+
+/* --- FOOTER --- */
+#footer {
+    background: var(--nero-carta);
+    border-top: 1px solid var(--grigio-medio);
+    text-align: center;
+    padding: 32px 40px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--grigio-testo);
+    letter-spacing: 0.1em;
+}
+
+.footer-dedica {
+    margin-top: 8px;
+    color: var(--oro-scuro);
+    font-size: 12px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    #header {
+        padding: 50px 24px 40px;
+    }
+
+    #header-deco {
+        display: none;
+    }
+
+    #main {
+        padding: 40px 16px 60px;
+        gap: 50px;
+    }
+
+    #form-inserimento {
+        grid-template-columns: 1fr;
+        padding: 24px;
+    }
+
+    #targa-bordo {
+        padding: 36px 24px;
+    }
+
+    .col-autore { width: 30%; }
+    .col-azioni { width: 160px; }
+
+    #tabella-libri td.col-azioni {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    #form-modifica {
+        padding: 24px;
+    }
+}

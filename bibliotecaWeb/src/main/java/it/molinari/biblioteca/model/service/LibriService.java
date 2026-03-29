@@ -55,11 +55,16 @@ public class LibriService
 	
 	public String serviceInsert(String autore, String titolo)
 	{
-		return dbManage.insertLibro(autore, titolo) ? "inserimento avvenuto con successo" : "inserimento non riuscito";
+		return dbManage.insertLibro(autore, titolo) ? "200 ok" : "400 bad";
 	}
 	
 	public String doElimina(String id)
 	{
-		return dbManage.eliminaLibro(Integer.parseInt(id)) ? "eliminazione avvenuta con successo" : "eliminazione non riuscita";
+		return dbManage.eliminaLibro(Integer.parseInt(id)) ? "200 ok" : "400 bad";
+	}
+	
+	public String doAggiorna(String id, String titolo, String autore)
+	{
+		return dbManage.updateLibro(Integer.parseInt(id), titolo, autore) ? "200 ok" : "400 bad";
 	}
 }

@@ -87,9 +87,9 @@
                                         title="Elimina libro">
                                         &#10005; Elimina
                                     </button>
-                                    <button class="btn-modifica" title="Modifica libro">
-                                        &#9998; Modifica
-                                    </button>
+                                    	<a class="btn-modifica" href="libroServlet?action=modifica&id=${libro.id}">
+								   		&#9998; Modifica
+									</a>
                                 </td>
                             </tr>
                         </c:forEach>

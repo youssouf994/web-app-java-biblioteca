@@ -86,7 +86,7 @@ public class OperazioniCrud
 			
 			int righeInserite= ps.executeUpdate();
 			
-			check=(righeInserite > 0) ?  true :  false;
+			check=righeInserite > 0 ?  true :  false;
 		
 		}
 		catch(SQLException e)
@@ -108,10 +108,35 @@ public class OperazioniCrud
 		{
 			ps.setInt(1, id);
 			ps.executeUpdate();
+			check=true;
 			
 		}
 		catch(SQLException e)
 		{
+			check=false;
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+	
+	public boolean updateLibro(int id, String titolo, String autore)
+	{
+		boolean check=false;
+		String query="UPDATE libri SET titolo = ?, autore = ? WHERE idLibro = ?";
+		
+		try(Connection conn=DbConnection.getConnessione();
+			PreparedStatement ps= conn.prepareStatement(query))
+		{
+			ps.setString(1, titolo);
+			ps.setString(2, autore);
+			ps.setInt(3, id);
+			ps.executeUpdate();
+			check=true;
+		}
+		catch(SQLException e)
+		{
+			check=false;
 			e.printStackTrace();
 		}
 		
